@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerManager
 {
+    public Player player { set; get; }
     // Start is called before the first frame update
     public static PlayerManager Instance
     {
@@ -17,14 +18,14 @@ public class PlayerManager
     private static PlayerManager instance;
     private PlayerManager() { }
 
-    Player player;
+    
 
     public void Initialize()
     {
         Debug.Log("Player Manager Initialize");
-        GameObject playerObj = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Player"));
+        GameObject playerObj = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/SG_radogost"));
+        playerObj.transform.position = WorldLinks.Instance.playerStartLocation.position;
         player = playerObj.GetComponent<Player>();
-        //player.transform.position
         player.Initialize();
     }
 
